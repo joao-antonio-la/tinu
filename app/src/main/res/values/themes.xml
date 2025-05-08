@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Tinu" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@color/secundaria</item>
+        <item name="colorPrimary">@color/primaria</item>
+        <item name="colorSecondary">@color/secundaria</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="colorControlNormal">@color/primaria</item>
+        <item name="colorControlActivated">@color/primaria</item>
+    </style>
+</resources>

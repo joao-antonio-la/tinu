@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaria">#45989D</color>
+    <color name="secundaria">#1A494C</color>
+    <color name="branco">#FFFFFF</color>
+    <color name="preto">#000000</color>
+    <color name="cinza">#525252</color>
+    <color name="vermelho">#FF9999</color>
+</resources>

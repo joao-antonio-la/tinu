@@ -1,0 +1,7 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+CREATE TABLE IF NOT EXISTS users (
+    user_id SERIAL PRIMARY KEY,
+    user_email VARCHAR(100) UNIQUE NOT NULL,
+    user_password_hash TEXT NOT NULL
+);
