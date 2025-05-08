@@ -35,9 +35,9 @@ utilize:
 docker-compose up --build -d
 ```
 
-Esse comando baixa as imagens necessárias e executa os containers
-com base nas instruções dos arquivos Dockerfile localizados nos
-diretórios de backend e database.
+Esse comando baixa as imagens necessárias e também executa os containers
+com base nas instruções do arquivo Dockerfile localizado no
+diretório de backend.
 
 ---
 

@@ -22,15 +22,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        // elementos interativos na tela
-        Button possuoContaBtn = findViewById(R.id.ja_possuo_conta_btn); // redirecionar para login
-        Button registrarBtn = findViewById(R.id.registrar_btn); // tentar registro no banco de dados
-        EditText iptEmail = findViewById(R.id.ipt_email); // input de email
-        EditText iptSenha = findViewById(R.id.ipt_senha); // input de senha
-        EditText iptConfirmSenha = findViewById(R.id.ipt_confirm_senha); // input de confirmação de senha
-        TextView warningText = findViewById(R.id.warning); // campo de texto para exibir aviso de erros
-
         // inicialização padrão
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -41,7 +32,15 @@ public class RegisterActivity extends AppCompatActivity {
             return insets;
         });
 
-        // ação de redirecionamento
+        // elementos interativos na tela
+        Button possuoContaBtn = findViewById(R.id.ja_possuo_conta_btn); // redirecionar para login
+        Button registrarBtn = findViewById(R.id.registrar_btn); // tentar registro no banco de dados
+        EditText iptEmail = findViewById(R.id.ipt_email); // input de email
+        EditText iptSenha = findViewById(R.id.ipt_senha); // input de senha
+        EditText iptConfirmSenha = findViewById(R.id.ipt_confirm_senha); // input de confirmação de senha
+        TextView warningText = findViewById(R.id.warning); // campo de texto para exibir aviso de erros
+
+        // ação de redirecionamento para login
         possuoContaBtn.setOnClickListener(view -> {
                 Intent intent = new Intent(RegisterActivity.this, AcessActivity.class);
                 startActivity(intent);
