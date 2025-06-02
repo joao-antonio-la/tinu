@@ -1,7 +1,6 @@
 package com.example.tinu;
 
 import java.text.DecimalFormat;
-import java.util.Random;
 
 public class OperationHandler {
     public static String executeConversion(UnitOptions.grandeza grandeza, Enum<?> unit1, Enum<?> unit2, String value) {

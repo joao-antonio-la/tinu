@@ -4,42 +4,66 @@ import java.util.List;
 
 public class UnitConverter {
 
-    // MÉTODO UNIFICADO PRINCIPAL - converte qualquer unidade usando grandeza
+    
     public static double converter(double valor, UnitOptions.grandeza tipo, int origem, int destino) {
         if (origem == destino) return valor;
 
         switch (tipo) {
-            case COMPRIMENTO: return converterComprimento(valor, origem, destino);
-            case AREA: return converterArea(valor, origem, destino);
-            case TEMPERATURA: return converterTemperatura(valor, origem, destino);
-            case VOLUME: return converterVolume(valor, origem, destino);
-            case MASSA: return converterMassa(valor, origem, destino);
-            case DADOS: return converterDados(valor, origem, destino);
-            case VELOCIDADE: return converterVelocidade(valor, origem, destino);
-            case TEMPO: return converterTempo(valor, origem, destino);
-            default: return valor;
+            case COMPRIMENTO:
+                return converterComprimento(valor, origem, destino);
+            case AREA:
+                return converterArea(valor, origem, destino);
+            case TEMPERATURA:
+                return converterTemperatura(valor, origem, destino);
+            case VOLUME:
+                return converterVolume(valor, origem, destino);
+            case MASSA:
+                return converterMassa(valor, origem, destino);
+            case DADOS:
+                return converterDados(valor, origem, destino);
+            case VELOCIDADE:
+                return converterVelocidade(valor, origem, destino);
+            case TEMPO:
+                return converterTempo(valor, origem, destino);
+            default:
+                return valor;
         }
     }
 
-    // FORMATAÇÃO UNIFICADA - usa automaticamente as abreviações do UnitOptions
+    
     public static String formatar(double valor, UnitOptions.grandeza tipo, int indice) {
         String unidade = "";
         switch (tipo) {
-            case COMPRIMENTO: unidade = UnitOptions.comprimentoAbrvAt(indice); break;
-            case AREA: unidade = UnitOptions.areaAbrvAt(indice); break;
-            case TEMPERATURA: unidade = UnitOptions.temperaturaAbrvAt(indice); break;
-            case VOLUME: unidade = UnitOptions.volumeAbrvAt(indice); break;
-            case MASSA: unidade = UnitOptions.massaAbrvAt(indice); break;
-            case DADOS: unidade = UnitOptions.dadosAbrvAt(indice); break;
-            case VELOCIDADE: unidade = UnitOptions.velocidadeAbrvAt(indice); break;
-            case TEMPO: unidade = UnitOptions.tempoAbrvAt(indice); break;
+            case COMPRIMENTO:
+                unidade = UnitOptions.comprimentoAbrvAt(indice);
+                break;
+            case AREA:
+                unidade = UnitOptions.areaAbrvAt(indice);
+                break;
+            case TEMPERATURA:
+                unidade = UnitOptions.temperaturaAbrvAt(indice);
+                break;
+            case VOLUME:
+                unidade = UnitOptions.volumeAbrvAt(indice);
+                break;
+            case MASSA:
+                unidade = UnitOptions.massaAbrvAt(indice);
+                break;
+            case DADOS:
+                unidade = UnitOptions.dadosAbrvAt(indice);
+                break;
+            case VELOCIDADE:
+                unidade = UnitOptions.velocidadeAbrvAt(indice);
+                break;
+            case TEMPO:
+                unidade = UnitOptions.tempoAbrvAt(indice);
+                break;
         }
         return String.format("%.2f %s", valor, unidade);
     }
 
 
-
-    // CONVERSÃO POR NOMES - usa diretamente as listas do UnitOptions
+    
     public static double converterPorNome(double valor, String tipoGrandeza, String unidadeDe, String unidadePara) {
         List<String> unidades = UnitOptions.getUnidadesFromString(tipoGrandeza);
         if (unidades == null) return valor;
@@ -49,7 +73,7 @@ public class UnitConverter {
 
         if (idxDe == -1 || idxPara == -1) return valor;
 
-        UnitOptions.grandeza tipo = UnitOptions.getGrandezaFromString(tipoGrandeza);
+        UnitOptions.grandeza tipo = UnitOptions.parseGrandeza(tipoGrandeza);
         if (tipo == null) return valor;
 
         return converter(valor, tipo, idxDe, idxPara);
@@ -71,12 +95,12 @@ public class UnitConverter {
     private static double converterTemperatura(double valor, int origem, int destino) {
         if (origem == destino) return valor;
 
-        if (origem == 0 && destino == 1) return (valor * 9.0/5.0) + 32; // C → F
+        if (origem == 0 && destino == 1) return (valor * 9.0 / 5.0) + 32; // C → F
         if (origem == 0 && destino == 2) return valor + 273.15; // C → K
-        if (origem == 1 && destino == 0) return (valor - 32) * 5.0/9.0; // F → C
-        if (origem == 1 && destino == 2) return ((valor - 32) * 5.0/9.0) + 273.15; // F → K
+        if (origem == 1 && destino == 0) return (valor - 32) * 5.0 / 9.0; // F → C
+        if (origem == 1 && destino == 2) return ((valor - 32) * 5.0 / 9.0) + 273.15; // F → K
         if (origem == 2 && destino == 0) return valor - 273.15; // K → C
-        if (origem == 2 && destino == 1) return ((valor - 273.15) * 9.0/5.0) + 32; // K → F
+        if (origem == 2 && destino == 1) return ((valor - 273.15) * 9.0 / 5.0) + 32; 
 
         return valor;
     }

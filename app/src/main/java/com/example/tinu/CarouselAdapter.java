@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHolder> {
-    private List<String> items;
-    private OnItemClickListener listener;
+    private final List<String> items;
+    private final OnItemClickListener listener;
 
     public interface OnItemClickListener {
         void onItemClick(String itemName);

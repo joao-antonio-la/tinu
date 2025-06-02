@@ -1,7 +1,6 @@
 package com.example.tinu;
 
 import java.util.List;
-import java.util.Map;
 
 public class UnitOptions {
 
@@ -169,21 +168,21 @@ public class UnitOptions {
 
     public static String getNomeFromEnum(Enum<?> unidadeEnum) {
         if (unidadeEnum instanceof area) {
-            return areaAt(((area) unidadeEnum).ordinal());
+            return areaAt(unidadeEnum.ordinal());
         } else if (unidadeEnum instanceof comprimento) {
-            return comprimentoAt(((comprimento) unidadeEnum).ordinal());
+            return comprimentoAt(unidadeEnum.ordinal());
         } else if (unidadeEnum instanceof temperatura) {
-            return temperaturaAt(((temperatura) unidadeEnum).ordinal());
+            return temperaturaAt(unidadeEnum.ordinal());
         } else if (unidadeEnum instanceof volume) {
-            return volumeAt(((volume) unidadeEnum).ordinal());
+            return volumeAt(unidadeEnum.ordinal());
         } else if (unidadeEnum instanceof massa) {
-            return massaAt(((massa) unidadeEnum).ordinal());
+            return massaAt(unidadeEnum.ordinal());
         } else if (unidadeEnum instanceof dados) {
-            return dadosAt(((dados) unidadeEnum).ordinal());
+            return dadosAt(unidadeEnum.ordinal());
         } else if (unidadeEnum instanceof velocidade) {
-            return velocidadeAt(((velocidade) unidadeEnum).ordinal());
+            return velocidadeAt(unidadeEnum.ordinal());
         } else if (unidadeEnum instanceof tempo) {
-            return tempoAt(((tempo) unidadeEnum).ordinal());
+            return tempoAt(unidadeEnum.ordinal());
         } else {
             return "Desconhecido";
         }
@@ -199,21 +198,7 @@ public class UnitOptions {
             case "dados": return getDados();
             case "velocidade": return getVelocidades();
             case "tempo": return getTempos();
-            default: return null;
-        }
-    }
-
-    public static grandeza getGrandezaFromString(String grandeza) {
-        switch (grandeza.toLowerCase()) {
-            case "área": return UnitOptions.grandeza.AREA;
-            case "comprimento": return UnitOptions.grandeza.COMPRIMENTO;
-            case "temperatura": return UnitOptions.grandeza.TEMPERATURA;
-            case "volume": return UnitOptions.grandeza.VOLUME;
-            case "massa": return UnitOptions.grandeza.MASSA;
-            case "dados": return UnitOptions.grandeza.DADOS;
-            case "velocidade": return UnitOptions.grandeza.VELOCIDADE;
-            case "tempo": return UnitOptions.grandeza.TEMPO;
-            default: return null;
+            default: return getAreas();
         }
     }
 

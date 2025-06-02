@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,12 +20,10 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 public class MainFunctionActivity extends AppCompatActivity {
-    private List<String> allOpts = List.of("Área", "Comprimento", "Temperatura", "Volume", "Massa", "Dados", "Velocidade", "Tempo");
+    private final List<String> allOpts = List.of("Área", "Comprimento", "Temperatura", "Volume", "Massa", "Dados", "Velocidade", "Tempo");
     private UnitOptions.grandeza grandezaAtual = UnitOptions.grandeza.AREA;
     private List<String> options = UnitOptions.getUnidades(grandezaAtual);
     private String selectedGrandeza = "Área";
@@ -190,7 +187,7 @@ public class MainFunctionActivity extends AppCompatActivity {
 
         Button btnClear = findViewById(R.id.buttonclear);
         btnClear.setOnClickListener(v -> {
-            textDisplays.get(activeDisplay).setText("");
+            textDisplays.get(activeDisplay).setText("0");
             updateConversion();
         });
 
@@ -214,7 +211,7 @@ public class MainFunctionActivity extends AppCompatActivity {
             result = OperationHandler.executeConversion(grandezaAtual, selectedTopUnity, selectedBottomUnity, input);
         else
             result = OperationHandler.executeConversion(grandezaAtual, selectedBottomUnity, selectedTopUnity, input);
-        textDisplays.get(activeDisplay ^ 1).setText(result);
+        textDisplays.get(activeDisplay ^ 1).setText(result.replace(".", ","));
     }
 
     public void showOptionsCard(View anchorView, List<String> options) {
@@ -256,12 +253,10 @@ public class MainFunctionActivity extends AppCompatActivity {
 
                 if (isTopMenuActive) {
                     if (selectedEnum.equals(selectedBottomUnity)) {
-                        // Swap the values
                         Enum<?> temp = selectedTopUnity;
                         selectedTopUnity = selectedBottomUnity;
                         selectedBottomUnity = temp;
 
-                        // Update UI
                         updateUnitTextViews();
                     } else {
                         selectedTopUnity = selectedEnum;
@@ -270,12 +265,10 @@ public class MainFunctionActivity extends AppCompatActivity {
                     }
                 } else {
                     if (selectedEnum.equals(selectedTopUnity)) {
-                        // Swap the values
                         Enum<?> temp = selectedBottomUnity;
                         selectedBottomUnity = selectedTopUnity;
                         selectedTopUnity = temp;
 
-                        // Update UI
                         updateUnitTextViews();
                     } else {
                         selectedBottomUnity = selectedEnum;
@@ -291,7 +284,6 @@ public class MainFunctionActivity extends AppCompatActivity {
 
             cardLayout.addView(option);
 
-            // Separator
             if (i < options.size() - 1) {
                 View divider = new View(this);
                 LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(
@@ -367,7 +359,8 @@ public class MainFunctionActivity extends AppCompatActivity {
         option1.setClickable(true);
 
         option1.setOnClickListener(v -> {
-            Toast.makeText(this, "Ainda não implementado!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainFunctionActivity.this, ExtensionActivity.class);
+            startActivity(intent);
             popupWindow.dismiss();
         });
 
